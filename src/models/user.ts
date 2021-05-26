@@ -19,7 +19,6 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
     username: {
         type: String,
-        unique: true,
         minlength: 6
     },
     password: {
@@ -38,14 +37,6 @@ const userSchema = new Schema({
     jwt_session: {
         type: String
     },
-    paymentsId: {
-        type: String,
-        default: new mongoose.mongo.ObjectId().toString()
-    },
-    sharedPaymentsId: {
-        type: [String],
-        default: []
-    }
 });
 
 userSchema.plugin(uniqueValidator, { message: 'unique' });

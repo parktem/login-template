@@ -35,10 +35,9 @@ export class UserRepositoryMongo implements Repository {
     signup(user: UserSignupModel): Promise<SignupUserResDTO> {
         return new Promise((resolve, reject) => {
             const userToSave = new UserModel({
-                username: user.username,
-                password: user.password,
                 email: user.email,
-                jwt_session: jwt.generateJWT({username: user.username, email: user.email})
+                password: user.password,
+                jwt_session: jwt.generateJWT({email: user.email})
             });
             userToSave.save( (err, doc) => {
                 if (!err) {

@@ -1,5 +1,4 @@
 export interface SignupUserReqDTO {
-    username: string,
-    password: string,
-    email: string
+    email: string,
+    password: string
 }

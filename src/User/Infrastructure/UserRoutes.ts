@@ -3,6 +3,7 @@ import { UserSignin } from "../Application/UserSignin";
 import { UserSignup }       from "../Application/UserSignup";
 import { Router }           from "express";
 import { SignupUserReqDTO } from "../Domain/DTO/Input/SignupUserReqDTO";
+import { SigninUserReqDTO } from "../Domain/DTO/Input/SigninUserReqDTO";
 import { SignupUserResDTO } from "../Domain/DTO/Output/SignupUserResDTO";
 import { SigninUserResDTO } from "../Domain/DTO/Output/SigninUserResDTO";
 
@@ -11,8 +12,8 @@ const userRepository = new UserRepositoryMongo();
 
 userRouter.post('/signin', (req, res) => {
     const userSignin = new UserSignin(userRepository);
-    const { username, password, email } = req.body;
-    const userReq: SignupUserReqDTO = { username, password, email }
+    const { email, password } = req.body;
+    const userReq: SigninUserReqDTO = { email, password }
     userSignin.signin(userReq).then( (user: SigninUserResDTO) => {
         res.send(user);
     }, () => {
@@ -22,8 +23,8 @@ userRouter.post('/signin', (req, res) => {
 
 userRouter.post('/signup', (req, res) => {
     const userSignup = new UserSignup(userRepository);
-    const { username, password, email } = req.body;
-    const userReq: SignupUserReqDTO = { username, password, email }
+    const { email, password } = req.body;
+    const userReq: SignupUserReqDTO = { email, password }
     userSignup.signup(userReq).then( (user: SignupUserResDTO) => {
         res.send(user);
     }, () => {

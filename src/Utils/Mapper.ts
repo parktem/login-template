@@ -5,9 +5,7 @@ export class Mapper {
 
     static toSignupUserResDTO(doc: any): SignupUserResDTO {
         return {
-            username: doc.username,
             email: doc.email,
-            id: doc._id,
             jwtSession: doc.jwt_session,
             createdAt: doc.createdAt,
         };
@@ -15,9 +13,7 @@ export class Mapper {
 
     static toSigninUserResDTO(doc: any): SigninUserResDTO {
         return {
-            username: doc.username,
             email: doc.email,
-            id: doc._id,
             jwtSession: doc.jwt_session,
             createdAt: doc.createdAt,
         };

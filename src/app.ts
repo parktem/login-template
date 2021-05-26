@@ -14,7 +14,7 @@ app.use(Routes)
 app.listen(process.env.PORT || 3000, (): void => {
     mongoose.set('useFindAndModify', false);
     mongoose.set('useUnifiedTopology', true);
-    mongoose.connect('mongodb://localhost:27017/portfolio', {useNewUrlParser: true}).then( (connection: typeof mongoose) => {
+    mongoose.connect('mongodb://localhost:27017/dates', {useNewUrlParser: true}).then( (connection: typeof mongoose) => {
         if (connection) {
             console.log('Node is ready and connected to MongoDB')
         }
